@@ -23,9 +23,6 @@ return new class extends Migration {
             $table->unsignedBigInteger('Total_days_present')->nullable();
             $table->timestamps();
 
-            // foreign key constraints
-            $table->foreign('employee_id')->references('id')->on('employee')->cascadeOnDelete();
-
         });
     }
 

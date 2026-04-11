@@ -18,10 +18,8 @@ return new class extends Migration
         $table->unsignedBigInteger('employee_id');
         $table->string('file_path');
         $table->date('issued_date')->nullable();
-        $table->string('file_path')->nullable();
         $table->unsignedBigInteger('issued_by')->nullable();
         $table->timestamps();
-        $table->foreign('employee_id')->references('employee')->on('employee');
         });
     }
 

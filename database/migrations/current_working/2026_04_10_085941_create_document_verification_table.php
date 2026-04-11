@@ -20,10 +20,6 @@ return new class extends Migration {
             $table->enum('status', ['pending', 'verified', 'rejected'])->default('pending');
             $table->unsignedBigInteger('employee_id');
             $table->timestamps();
-
-            // foregin key constrain
-            $table->foreign('employee_document_id')->references('id')->on('employee_document');
-            $table->foreign('employee_id')->references('id')->on('employee');
         });
     }
 

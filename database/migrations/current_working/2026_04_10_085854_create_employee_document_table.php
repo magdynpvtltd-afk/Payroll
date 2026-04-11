@@ -20,9 +20,6 @@ return new class extends Migration
         $table->string('file_path');
         $table->dateTime('uploaded_at')->default(now());
         $table->timestamps();
-
-        // references 
-        $table->foreign('document_type_id')->references('id')->on('document_type');
         });
     }
 

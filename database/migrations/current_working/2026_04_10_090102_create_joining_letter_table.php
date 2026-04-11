@@ -20,7 +20,6 @@ return new class extends Migration
         $table->string('file_path');
         $table->date('issued_date')->nullable();
         $table->timestamps();
-        $table->foreign('employee_id')->references('employee')->on('employee');
         });
     }
 

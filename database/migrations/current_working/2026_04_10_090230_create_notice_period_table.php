@@ -21,7 +21,6 @@ return new class extends Migration
         $table->date('end_date')->nullable();
         $table->decimal('fnf_amount')->nullable();
         $table->timestamps();
-        $table->foreign('employee_id')->references('employee')->on('employee');
         });
     }
 

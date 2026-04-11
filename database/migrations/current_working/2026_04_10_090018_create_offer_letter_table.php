@@ -20,10 +20,6 @@ return new class extends Migration {
             $table->date('issued_date');
             $table->boolean('accepted')->default(false);
             $table->timestamps();
-
-            // constraint
-            $table->foreign('employee_id')->references('employee')->on('employee');
-            
         });
     }
 

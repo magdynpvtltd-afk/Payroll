@@ -25,9 +25,6 @@ return new class extends Migration {
             $table->integer('payment_status')->default(0);
             $table->timestamps();
 
-            // foreign key constraint 
-            $table->foreign('employee_id')->references('id')->on('employee')->cascadeOnDelete();
-
         });
     }
 

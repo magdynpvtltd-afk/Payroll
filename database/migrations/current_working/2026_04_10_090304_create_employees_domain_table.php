@@ -20,7 +20,6 @@ return new class extends Migration
         $table->string('domain')->nullable();
         $table->enum('proficiency_level', ['beginner', 'intermediate', 'expert'])->nullable();
         $table->timestamps();
-        $table->foreign('employee_id')->references('employee')->on('employee');
         });
     }
 

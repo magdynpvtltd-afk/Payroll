@@ -17,9 +17,6 @@ return new class extends Migration {
             $table->string('name');
             $table->unsignedBigInteger('head_employee_id')->nullable();
             $table->timestamps();
-
-            // foreign key constraints
-            $table->foreign('head_employee_id')->references('id')->on('employee')->cascadeOnDelete();
         });
     }
 

@@ -28,12 +28,6 @@ return new class extends Migration {
             $table->date('probation_end_date')->nullable();
             $table->unsignedBigInteger('designation_id')->nullable();
             $table->timestamps();
-
-
-            // foreign key constraint 
-            $table->foreignId('department_id')->nullable()->constrained();
-            $table->foreign('designation_id')->references('id')->on('designations');
-
         });
 
     }

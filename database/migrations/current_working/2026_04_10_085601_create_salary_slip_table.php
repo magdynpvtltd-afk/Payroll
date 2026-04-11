@@ -19,9 +19,6 @@ return new class extends Migration {
             $table->string('file_path')->nullable();
             $table->boolean('is_emailed')->default(false);
             $table->timestamps();
-
-            // foreign key references 
-            $table->foreign('monthly_salary_id')->references('id')->on('monthly_salary')->cascadeOnDelete();
         });
     }
 
