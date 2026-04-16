@@ -70,7 +70,9 @@
     color: var(--muted);
     text-decoration: none;
     border-radius: 10px;
-    transition: background 0.15s, color 0.15s;
+    transition:
+        background 0.15s,
+        color 0.15s;
 }
 
 .app-nav__link:hover {
@@ -370,19 +372,22 @@ code {
         justify-content: center;
     }
 }
-.make_flex{
+.make_flex {
     display: flex;
 }
 .make_flex div {
     margin-right: 15px;
 }
-.offer-letter-icons{
+.offer-letter-icons {
     font-size: 100%;
     color: white;
 }
-#offer-letter-table tr td:last-child{ 
-    text-align: center !important;
-}
+
 #offer-letter-table tr td i:first-child {
     margin-right: 5px;
 }
+.custom_buttons_display{
+    display: flex;
+    justify-content: space-between;
+}
+
