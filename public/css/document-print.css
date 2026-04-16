@@ -6,8 +6,8 @@
     --doc-accent: #1d4ed8;
     --doc-serif: "Georgia", "Times New Roman", serif;
     --doc-sans: "DM Sans", system-ui, sans-serif;
-    --doc-calibra : "Calibri";
-    --doc-title-size : "5%";
+    --doc-calibra: "Calibri";
+    --doc-title-size: "5%";
 }
 
 .doc-print-body {
@@ -79,7 +79,7 @@
 }
 
 .doc-letterhead {
-    border-bottom: 2px solid var(--doc-accent);
+    border-bottom: 2px solid black;
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
     display: flex;
@@ -88,8 +88,8 @@
 }
 
 .doc-letterhead__logo {
-    height: 80px;
-    width:80px;
+    height: 70px;
+    width: 70px;
     margin-bottom: 0.5rem;
 }
 
@@ -194,21 +194,29 @@
 
     .doc-page {
         margin: 0;
-        padding: 12mm 16mm;
+        padding: 0 2mm;
         border: none;
         box-shadow: none;
         max-width: none;
         min-height: auto;
     }
+    .doc-body {
+        font-size: 14px !important;
+    }
 
     @page {
         size: A4;
-        margin: 12mm;
+        /* margin: 10mm; */
     }
 }
-#terms_conditions tr td:first-child , #terms_conditions tr td:nth-child(2)  {
+#terms_conditions tr td:first-child,
+#terms_conditions tr td:nth-child(2) {
     vertical-align: text-top;
 }
+#terms_conditions tr td {
+    line-height: 1.5;
+}
+
 .emp_signature {
     display: flex;
     justify-content: space-between;
@@ -216,10 +224,41 @@
 .confirm_date_of_joining {
     text-align: center;
 }
-.doc_footer_line{
+.doc_footer_line {
     margin-top: 10px;
     border-top: 1px solid grey;
 }
-.page-break{
-    page-break-before:always ;
+.page-break {
+    page-break-before: always;
+}
+.doc-letter-footer {
+    text-align: center;
+}
+
+/* page 2 */
+.salary_breakup_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.salary_breakup_div table,
+.salary_breakup_div table tr,
+.salary_breakup_div table td,
+.salary_breakup_div table th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.salary_breakup_div table {
+    width: 45%;
+
+}
+.salary_breakup_div table th {
+    text-align: center;
+}
+.salary_breakup_div table td:first-child {
+    text-align: center;
+}
+.salary_breakup_div table td {
+    height: 5mm;
 }
