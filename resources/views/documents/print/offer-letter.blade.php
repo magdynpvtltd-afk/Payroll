@@ -2,7 +2,7 @@
     $role = $roleTitle ?? $employee?->designation?->title;
 @endphp
 <x-layouts.document-print pageTitle="Offer letter" :backUrl="route('documents.offer-letters.index')">
-    @include('documents.partials.letterhead', ['company' => $company])
+    @include('documents.partials.letterhead', ['company' => $company, 'title' => 'Offer Letter'])
 
     <div class="doc-body">
         <p class="doc-meta">
@@ -47,7 +47,8 @@
                 <td>6.Confirmation</td>
                 <td>:</td>
                 <td>After completion of six months, we will evaluate your performance and decide whether to retain your
-                    services. Unless the employment is confirmed in writing at the end of the probation period, it should be considered terminated. </td>
+                    services. Unless the employment is confirmed in writing at the end of the probation period, it
+                    should be considered terminated. </td>
             </tr>
             <tr>
                 <td>7.House Of work</td>
@@ -98,83 +99,92 @@
         <div class="page-break"></div>
 
         <!-- page 2 -->
-        @include('documents.partials.letterhead', ['company' => $company])
+        @include('documents.partials.letterhead', ['company' => $company, 'title' => 'Offer Letter'])
         <div class="salary_breakup_div">
-            <table>
-                <tr>
-                    <th colspan="3"><strong>SALARY BREAKUP</strong></th>
-                </tr>
-                <tr>
-                    <th><strong>S.No</strong></th>
-                    <th><strong>PARTICULARS</strong></th>
-                    <th><strong>Value</strong></th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><strong>Salary</strong></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>BASIC</td>
-                    <td>{{ $annex['basic'] }}</td>
-                </tr>  
-                <tr>
-                    <td>2</td>
-                    <td>HRA</td>
-                    <td>{{ $annex['hra'] }}</td>
-                </tr>  
-                <tr>
-                    <td>3</td>
-                    <td>Conveyance</td>
-                    <td>{{ $annex['conveyance'] }}</td>
-                </tr>  
-                <tr>
-                    <td>4</td>
-                    <td>Vehicle Maintenance</td>
-                    <td>{{ $annex['vehicle_maintenance'] }}</td>
-                </tr>  
-                <tr>
-                    <td>5</td>
-                    <td>Production incentive</td>
-                    <td>{{ $annex['production_incentive'] }}</td>
-                </tr>  
-                <tr>
-                    <td></td>
-                    <td><strong>Gross Pay</strong></td>
-                    <td>{{ $annex['gross_pay'] }}</td>
-                </tr>  
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>  
-                <tr>
-                    <td>7</td>
-                    <td><strong>Benefits</strong></td>
-                    <td></td>
-                </tr>  
-                <tr>
-                    <td>8</td>
-                    <td>PF+ESI</td>
-                    <td>{{ $annex['pf_esi'] }}</td>
-                </tr>  
-                <tr>
-                    <td>9</td>
-                    <td><strong>Total Cost to Company</strong></td>
-                    <td>{{ $annex['total_ctc']}}</td>
-                </tr>            
-            </table>
-        </div> 
-        <p>
-            <strong>Note :</strong>
-        </p>
-        <ol>
-            <li>All payments are subject to Tax deduction at source (TDS). You are responsible for declaring your tax exemptions & tax liabilities</li>
-            <li>Take home pay will be Gross Pay - Applicable Statutory deductions(PF, ESI, Professional Tax etc.)</li>
-            <li>All reimbursements are at actuals and need to be supported with bills/vouchers whenever available</li>
-        </ol>
+            <section>
+                <table>
+                    <tr>
+                        <th colspan="3"><strong>SALARY BREAKUP</strong></th>
+                    </tr>
+                    <tr>
+                        <th><strong>S.No</strong></th>
+                        <th><strong>PARTICULARS</strong></th>
+                        <th><strong>Value</strong></th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><strong>Salary</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>BASIC</td>
+                        <td>{{ $annex['basic'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>HRA</td>
+                        <td>{{ $annex['hra'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Conveyance</td>
+                        <td>{{ $annex['conveyance'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Vehicle Maintenance</td>
+                        <td>{{ $annex['vehicle_maintenance'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Production incentive</td>
+                        <td>{{ $annex['production_incentive'] }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><strong>Gross Pay</strong></td>
+                        <td><strong>{{ $annex['gross_pay'] }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>Benefits</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>PF+ESI</td>
+                        <td>{{ $annex['pf_esi'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>Total Cost to Company</strong></td>
+                        <td><strong>{{ $annex['total_ctc']}}</strong></td>
+                    </tr>
+                </table>
+
+                <p>
+                    <strong>Note :</strong>
+                </p>
+                <ol>
+                    <li>All payments are subject to Tax deduction at source (TDS). You are responsible for declaring
+                        your tax
+                        exemptions & tax liabilities</li>
+                    <li>Take home pay will be Gross Pay - Applicable Statutory deductions(PF, ESI, Professional Tax
+                        etc.)</li>
+                    <li>All reimbursements are at actuals and need to be supported with bills/vouchers whenever
+                        available</li>
+                </ol>
+            </section>
+            
+        </div>
+        @include('documents.partials.letterfooter', ['company' => $company])
     </div>
-    
+
 
 </x-layouts.document-print>

@@ -208,6 +208,9 @@
         size: A4;
         /* margin: 10mm; */
     }
+    .salary_breakup_div {
+        height: 83vh;
+    }
 }
 #terms_conditions tr td:first-child,
 #terms_conditions tr td:nth-child(2) {
@@ -240,18 +243,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
-.salary_breakup_div table,
-.salary_breakup_div table tr,
-.salary_breakup_div table td,
-.salary_breakup_div table th {
+.salary_breakup_div section table,
+.salary_breakup_div section table tr,
+.salary_breakup_div section table td,
+.salary_breakup_div section table th {
     border: 1px solid black;
     border-collapse: collapse;
 }
-.salary_breakup_div table {
-    width: 45%;
-
+.salary_breakup_div section:first-child {
+    width: 100%;
+}
+.salary_breakup_div section:first-child table {
+    margin-left: 25%;
+    width:50%;
 }
 .salary_breakup_div table th {
     text-align: center;

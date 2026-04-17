@@ -36,7 +36,7 @@
                             <td>
                                 <a class="offer-letter-icons" href="{{ route('documents.offer-letters.preview', $row) }}"><i class="fa-solid fa-file-arrow-up "></i></a>
                                 <a class="offer-letter-icons" href="{{ route('documents.offer-letters.delete' , $row['id']) }}"><i class="fa-solid fa-trash"></i></a>
-                                <a class="offer-letter-icons" href="#"><i class="fa fa-envelope"></i></a>
+                                <!-- <a class="offer-letter-icons" href="#"><i class="fa fa-envelope"></i></a> -->
                             </td>
                         </tr>
                     @empty

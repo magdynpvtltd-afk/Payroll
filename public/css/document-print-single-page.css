@@ -122,7 +122,6 @@
     font-family: var(--doc-calibra);
     font-size: 11.5pt;
     line-height: 1.65;
-    height: 110vh;
 }
 
 .doc-body p {
@@ -189,8 +188,7 @@
     justify-content: center;
 }
 .doc-confirmation-letter{
-    margin-top: 30%;
-    height: 100vh;
+    margin-top: 30%; 
 }
 
 @media print {
@@ -212,7 +210,7 @@
     }
     .doc-body {
         font-size: 14px !important;
-        height: 70vh;
+        height: 60vh;
     }
 
     @page {
@@ -246,30 +244,3 @@
     text-align: center;
 }
 
-/* page 2 */
-.salary_breakup_div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-.salary_breakup_div table,
-.salary_breakup_div table tr,
-.salary_breakup_div table td,
-.salary_breakup_div table th {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-.salary_breakup_div table {
-    width: 45%;
-
-}
-.salary_breakup_div table th {
-    text-align: center;
-}
-.salary_breakup_div table td:first-child {
-    text-align: center;
-}
-.salary_breakup_div table td {
-    height: 5mm;
-}

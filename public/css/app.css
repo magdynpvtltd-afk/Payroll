@@ -390,4 +390,44 @@ code {
     display: flex;
     justify-content: space-between;
 }
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
+.dropdown-btn {
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    border: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-content a:hover {
+    background-color: #f2f2f2;
+}
+.employee_action_dropdown_show {
+    display: block;
+}
+
+.fa-pen , .fa-trash {
+    color: white;
+    padding-right: 4px;
+}

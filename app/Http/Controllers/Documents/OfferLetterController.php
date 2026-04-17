@@ -112,7 +112,7 @@ class OfferLetterController extends Controller
 
         $hra_stirng =  str_replace('ctc' , $ctc , $allowance_mapings['Hra'] ); 
         $hra = eval("return $hra_stirng;");
-        $grossPay = $basic + $hra  + $pf_esi + $vehicle_maintenance + $production_incentive  ;
+        $grossPay = $basic + $hra   + $vehicle_maintenance + $production_incentive  + $conveyance;
         
 
         
@@ -146,5 +146,9 @@ class OfferLetterController extends Controller
     public function delete($id){
         OfferLetter::find($id)?->delete();
         return back();
+    }
+
+    public function custom($id){
+        dd($id);
     }
 }
