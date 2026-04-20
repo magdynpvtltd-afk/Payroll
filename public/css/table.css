@@ -1,0 +1,49 @@
+:root {
+    --bg: white;
+    --th-header-color: black;
+    --table-title-fs: 16px;
+    --table-title-fw: 600;
+}
+.table-container {
+    background-color: red;
+    height: 100%;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    color: var(--th-header-color);
+    font-size: var(--table-title-fs);
+    font-weight: var(--table-title-fw);
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.65rem 0.85rem;
+    text-align: left;
+}
+
+.data-table th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--th-header-color);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.data-table .cell-muted {
+    color: var(--muted);
+}

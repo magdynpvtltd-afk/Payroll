@@ -1,0 +1,236 @@
+/* ===== Navbar ===== */
+.app-nav{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap:15px;
+    background:#1f2937;
+    padding:10px 20px;
+}
+
+.app-nav a,
+.app-nav .dropdown-toggle{
+    color:#ffffff !important;
+    font-size:14px;
+    text-decoration:none;
+}
+
+/* ===== Dropdown ===== */
+.dropdown{
+    position:relative;
+    display:inline-block;
+}
+
+.dropdown-content,
+.dropdown-menu{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    background:#ffffff;
+    min-width:220px;
+    border:1px solid #ddd;
+    z-index:999;
+}
+
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+
+.dropdown-content a,
+.dropdown-menu a,
+.dropdown-item{
+    display:block;
+    padding:10px 14px;
+    color:#000000 !important;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.dropdown-content a:hover,
+.dropdown-menu a:hover,
+.dropdown-item:hover{
+    background:#f3f4f6;
+    color:#2563eb !important;
+}
+/* Employee & Allowance top menu text */
+nav.app-nav .dropdown > a,
+nav.app-nav .dropdown > button,
+nav.app-nav .dropdown-toggle,
+nav.app-nav .nav-link{
+    color:#ffffff !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    font-weight:500 !important;
+    font-size:14px !important;
+}
+/* Navbar row fix */
+.app-nav{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+/* Dropdown in same line */
+.app-nav .dropdown{
+    display:inline-block;
+}
+.app-nav a,
+.app-nav .dropdown-toggle{
+    font-size:13px !important;
+    font-weight:400 !important;
+    color:#ffffff !important;
+    font-family:Arial, sans-serif;
+}
+/* ===============================
+   FORCE DROPDOWN TEXT VISIBLE
+================================= */
+
+/* Dropdown container */
+.dropdown-menu,
+.dropdown-content{
+    background:#ffffff !important;
+    opacity:1 !important;
+}
+
+/* All text inside dropdown */
+.dropdown-menu *,
+.dropdown-content *,
+.dropdown-item,
+.dropdown-menu a,
+.dropdown-content a,
+.dropdown-menu li a{
+    color:#000000 !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    text-decoration:none !important;
+    font-size:13px !important;
+    font-family:Arial, sans-serif !important;
+}
+
+/* Hover */
+.dropdown-menu a:hover,
+.dropdown-content a:hover,
+.dropdown-item:hover,
+.dropdown-menu li a:hover{
+    background:#f3f4f6 !important;
+    color:#2563eb !important;
+}
+
+/* ===============================
+   TOP MENU TEXT ONLY STYLE
+================================= */
+
+/* Employees / Allowance top text */
+.dropdown > a,
+.dropdown-toggle{
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+    color:rgba(255,255,255,0.85) !important;
+    font-size:13px !important;
+    font-weight:400 !important;
+    padding:8px 10px !important;
+    text-decoration:none !important;
+}
+
+/* Hover = darker white */
+.dropdown > a:hover,
+.dropdown-toggle:hover{
+    background:transparent !important;
+    color:#ffffff !important;
+}
+
+/* Remove focus border */
+.dropdown > a:focus,
+.dropdown-toggle:focus{
+    outline:none !important;
+    box-shadow:none !important;
+}
+/* Employees / Allowance normal */
+.app-nav .dropdown .btn,
+.app-nav .dropdown button,
+.app-nav .dropdown-toggle{
+    color:rgba(255,255,255,0.75) !important;
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+}
+
+/* Hover */
+.app-nav .dropdown .btn:hover,
+.app-nav .dropdown button:hover,
+.app-nav .dropdown-toggle:hover{
+    color:#ffffff !important;
+    background:transparent !important;
+}
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu,
+.dropdown:hover .dropdown-content{
+    display:block !important;
+    margin-top:0;
+}
+
+/* Keep hidden normally */
+.dropdown-menu,
+.dropdown-content{
+    display:none;
+    position:absolute;
+    z-index:999;
+}
+
+/* Parent dropdown position */
+.dropdown{
+    position:relative;
+}
+/* Force rounded dropdown box */
+.dropdown-menu,
+.dropdown-content{
+    border-radius:8px !important;
+    overflow:hidden !important;
+    padding:0 !important;
+    border:1px solid #d1d5db !important;
+}
+
+/* Force full row items */
+.dropdown-menu .dropdown-item,
+.dropdown-menu a,
+.dropdown-content a{
+    display:block !important;
+    width:100% !important;
+    padding:10px 14px !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    background:#ffffff !important;
+    color:#000000 !important;
+}
+
+/* Hover full black highlight */
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu a:hover,
+.dropdown-content a:hover{
+    background:#000000 !important;
+    color:#ffffff !important;
+}
+/* Sign out normal */
+.logout-btn{
+    background:#dc2626 !important;
+    color:#ffffff !important;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s ease;
+    font-weight:600;
+    margin-left:10px;
+}
+
+/* Hover highlight */
+.logout-btn:hover{
+    background:#ef4444 !important;
+    color:#ffffff !important;
+}
+.nav-right{
+    display: flex; 
+    align-items: center;
+}

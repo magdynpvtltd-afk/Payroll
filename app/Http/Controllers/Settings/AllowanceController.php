@@ -18,4 +18,9 @@ class AllowanceController extends Controller
         ]);
         return redirect()->back()->with('success' , 'Allowance Updated SuccessFully !');
     }
+
+    public function index(){
+      $allowance = Allowance::paginate(100) ; 
+      return view('pages.allowance.index' , compact('allowance'));
+    }
 }

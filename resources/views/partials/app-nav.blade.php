@@ -36,8 +36,8 @@
             'label' => 'Allowance',
             'subheadings' => [
                 [
-                    'route' => 'employees.index',
-                    'label' => 'Employees List',
+                    'route' => 'allowance.index',
+                    'label' => 'Allowance List',
                     'icons' => 'users'
                 ]
             ],
@@ -46,8 +46,6 @@
 
     ];
 @endphp
-
-
 <nav class="app-nav" aria-label="Main">
     <div class="dropdown-container">
         @foreach ($items as $item)
@@ -64,11 +62,11 @@
         </a>
     @endforeach
     </div>
-    <div class="nav-right">
+    <div class="nav-right d-flex">
 
     @auth
-        <div class="nav-user">
-            <i class="fa fa-user user-icon"></i>
+        <div class="nav-user pe-3">
+            <i class="fa fa-user user-icon pe-2"></i>
 
             <span class="user-name">
                 {{ auth()->user()->user_name ?? auth()->user()->email }}
