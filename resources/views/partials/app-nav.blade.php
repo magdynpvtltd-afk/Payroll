@@ -49,9 +49,10 @@
 
 
 <nav class="app-nav" aria-label="Main">
-    @foreach ($items as $item)
+    <div class="dropdown-container">
+        @foreach ($items as $item)
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn dropdown-toggle nav-drop-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{ $item['label'] }}
             </button>
             <ul class="dropdown-menu">
@@ -62,4 +63,25 @@
         </div>
         </a>
     @endforeach
+    </div>
+    <div class="nav-right">
+
+    @auth
+        <div class="nav-user">
+            <i class="fa fa-user user-icon"></i>
+
+            <span class="user-name">
+                {{ auth()->user()->user_name ?? auth()->user()->email }}
+            </span>
+        </div>
+    @endauth
+
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="logout-btn">
+            Sign out
+        </button>
+    </form>
+
+</div>
 </nav>
