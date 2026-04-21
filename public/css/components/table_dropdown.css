@@ -1,0 +1,29 @@
+.table-responsive {
+    overflow: visible !important;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.table-responsive {
+    overflow: visible !important;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    min-width: 180px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
