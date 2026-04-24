@@ -6,7 +6,6 @@
     font-weight: 800 !important;
 }
 
-
 .table-panel {
     font: 12px verdana;
     text-align: left;
@@ -22,7 +21,9 @@
 .table-panel tbody {
     height: 80% !important;
 }
-
+table.dataTable {
+    table-layout: fixed;
+}
 table.dataTable thead th,
 table.dataTable tfoot th {
     font-weight: bold;
@@ -56,8 +57,19 @@ table.dataTable thead td {
     margin-top: 1% !important;
 }
 
-
 .fa-icon {
     color: #212529;
     text-decoration: none;
+}
+
+.datatable-v1 .dropdown {
+    height: 30px !important;
+    background-color: #0d6efd !important ;
+}
+.datatable-v1 .dropdown .dropdown-toggle {
+    font-size: 12px !important;
+    color: white !important;
+}
+.datatable-v1 .dropdown-menu {
+    right: 0 !important ;
 }
