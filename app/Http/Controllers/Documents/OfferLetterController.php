@@ -8,10 +8,11 @@ use App\Models\OfferLetter;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Models\Department ;
+use App\Models\Department;
 use App\Models\Designation;
 use App\Models\Salary;
-use App\Models\settings\Allowance ;
+use App\Models\settings\Allowance;
+use Yajra\DataTables\Facades\DataTables;
 
 class OfferLetterController extends Controller
 {
@@ -19,12 +20,45 @@ class OfferLetterController extends Controller
 
     public function index(): View
     {
+        return view('documents.offer-letters.index');
+    }
+
+    public function getData()
+    {
         $letters = OfferLetter::query()
-            ->with(['employee.department', 'employee.designation' , 'employee.salaryStructures'])
-            ->orderByDesc('issued_date')
-            ->orderByDesc('id')
-            ->paginate(15);
-        return view('documents.offer-letters.index', compact('letters'));
+            ->with(['employee.department', 'employee.designation', 'employee.salaryStructures'])->get();
+
+        $data = $letters->map(function ($letter) {
+            return [
+                $letter->employee->employee_code,
+                $letter->employee->full_name,
+                $letter->employee->department->name,
+                $letter->employee->designation->title,
+                $letter->employee->salary->ctc,
+                $letter->employee->salary->variable,
+                '<div class="dropdown">
+                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        options
+                     </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a  href="' . route('documents.offer-letters.delete', $letter->id) . '"><i class="fa fa-trash"></i> Delete
+                            </a>
+                        </li>
+                        <li>
+                           <a  href="' . route('documents.offer-letters.preview', $letter) . '"><i class="fa fa-eye"></i> Preview
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </div>',
+            ];
+        });
+
+        return DataTables::of($data)
+            ->rawColumns([6])
+            ->make(true);
+
     }
 
     public function create(): View
@@ -35,13 +69,14 @@ class OfferLetterController extends Controller
             ->get();
 
         $designations = Designation::all();
-        $allowance = Allowance::all()->toArray() ;
-        $allowance_mapings = [] ; 
-        foreach ($allowance as $row) {
-            $allowance_mapings[$row['type']] =$row['value'];
-        } 
+        $allowance = Allowance::all()->toArray();
+        $allowance_mapings = [];
+        foreach ($allowance as $row)
+        {
+            $allowance_mapings[$row['type']] = $row['value'];
+        }
 
-        return view('documents.offer-letters.create', compact('employees' , 'designations' , 'allowance_mapings'));
+        return view('documents.offer-letters.create', compact('employees', 'designations', 'allowance_mapings'));
     }
 
     public function store($employee_id): RedirectResponse
@@ -50,7 +85,7 @@ class OfferLetterController extends Controller
 
         $letter = OfferLetter::query()->create([
             'employee_id' => $employee_id,
-            'offered_salary' => $salary?->salary?->ctc ,
+            'offered_salary' => $salary?->salary?->ctc,
             'file_path' => '',
             'issued_date' => date('Y-m-d'),
             'accepted' => false,
@@ -63,41 +98,28 @@ class OfferLetterController extends Controller
 
     public function preview(OfferLetter $offerLetter): View
     {
-       
-        $allowance = Allowance::all()->toArray() ;
 
-        $allowance_mapings = [] ; 
+        $allowance = Allowance::all()->toArray();
 
-        foreach ($allowance as $row) {
-            $allowance_mapings[$row['type']] =$row['value'];
-        } 
-   
+        $allowance_mapings = [];
+        $pf_esi = null;
+        $gross_pay = 0;
 
-        $offerLetter->load(['employee.department', 'employee.designation' , 'employee.salary']);
+
+        $offerLetter->load(['employee.department', 'employee.designation', 'employee.salary']);
         $employee = $offerLetter->employee;
-        $ctc = $employee->salary->ctc ;
-
-        $conveyance_string = str_replace('ctc' , $ctc , $allowance_mapings['conveyance'] ); 
-        $conveyance = eval("return $conveyance_string;");
-
-        $vehicle_maintenance_string = str_replace('ctc' , $ctc , $allowance_mapings['vehicle_maintenance'] ); 
-        $vehicle_maintenance = eval("return $vehicle_maintenance_string;");
-
-        $production_incentive_string = str_replace('ctc' , $ctc , $allowance_mapings['production_incentive'] ); 
-        $production_incentive = eval("return $production_incentive_string;");
-
-        $pf_esi_string = str_replace('ctc' , $ctc , $allowance_mapings['pf_esi'] ); 
-        $pf_esi = eval("return $pf_esi_string;");
-
-        $basic_stirng =  str_replace('ctc' , $ctc , $allowance_mapings['Basic'] ); 
-        $basic = eval("return $basic_stirng;");
-
-        $hra_stirng =  str_replace('ctc' , $ctc , $allowance_mapings['Hra'] ); 
-        $hra = eval("return $hra_stirng;");
-        $grossPay = $basic + $hra   + $vehicle_maintenance + $production_incentive  + $conveyance;
-        
-
-        
+        $ctc = $employee->salary->ctc;
+        foreach ($allowance as $row)
+        {
+            $values = str_replace('ctc', $ctc, $row['value']);
+            if ($row['type'] == 'pf_esi')
+            {
+                $pf_esi = eval (" return $values;");
+                continue;
+            }
+            $allowance_mapings[$row['type']] = eval ("return $values;");
+            $gross_pay += eval ("return $values;");
+        }
 
         $footerLine = config('company.footer_address')
             ?? trim(implode(', ', array_filter([
@@ -112,20 +134,17 @@ class OfferLetterController extends Controller
             'company' => config('company'),
             'footerLine' => $footerLine,
             'annex' => [
-                'basic' => $basic,
-                'hra' => $hra,
-                'conveyance' => $conveyance,
-                'vehicle_maintenance' => $vehicle_maintenance,
-                'production_incentive' => $production_incentive,
-                'gross_pay' => $grossPay,
+                'allowance' => $allowance_mapings,
                 'pf_esi' => $pf_esi,
                 'total_ctc' => $ctc,
+                'gross_pay' => $gross_pay
             ],
         ]);
     }
 
 
-    public function delete($id){
+    public function delete($id)
+    {
         OfferLetter::find($id)?->delete();
         return back();
     }

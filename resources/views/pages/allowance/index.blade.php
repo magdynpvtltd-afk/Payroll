@@ -1,43 +1,25 @@
 <x-layouts.app>
     @push('styles')
-       <link rel="stylesheet" href="{{ asset('css/table.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/components/table_dropdown.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/table.css') }}">
     @endpush()
-
-    @if (session('success'))
-        <div class="app-flash app-flash--success" role="status">{{ session('success') }}</div>
-    @endif
-    <div class="table-container">
-        <div class="table-header">
-            <section>Showing {{$allowance->firstItem()}} to {{ $allowance->lastItem() }} of {{ $allowance->count() }}
-                entries</section>
-            <section>Allowance List</section>
-            <section>
-                {{ $allowance->links() }}
-            </section>
+    <section class="table-panel" style="padding:0; margin:0;">
+        <div class="table-responsive" style="width:100%; margin:0; padding:0;">
+            <x-data_table :headers="[
+        'id',
+        'type',
+        'value',
+    ]" id="allowance_table" pagetitle="Allowance List"
+                ajax="allowance.getData" />
         </div>
-        <table class="data-table table table-striped">
-            <thead>
-                <th>S.No</th>
-                <th>Type</th>
-                <th>Expression</th>
-            </thead>
+    </section>
 
-            <tbody>
-                @foreach ($allowance as $row)
-                    <tr class="edit_allowance_rows">
-                        <td>{{ $row?->id }}</td>
-                        <td class="type" data-id={{ $row?->id }}>{{ $row?->type }}</td>
-                        <td class="value" data-id={{ $row?->id }}>{{ $row?->value }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
     @push('external_scripts')
         <script>
-            let allowance_rows = document.querySelectorAll('.edit_allowance_rows td:nth-child(3)');
+            let allowance_rows = document.querySelectorAll('#allowance_table tbody tr  td:nth-child(2)');
             Array.from(allowance_rows).forEach(function (row) {
                 row.addEventListener('dblclick', function (e) {
+                    alert('working');
                     let existing_value = e.target.textContent;
                     let name = e.target.className;
 

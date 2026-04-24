@@ -15,25 +15,25 @@
                 ],
                 [
                     'route' => 'documents.joining-letters.index',
-                    'label' => 'Joining Letters',
+                    'label' => 'Confirmation Letters',
                     'icons' => ''
                 ],
-                [
-                    'route' => 'documents.experience-letters.index',
-                    'label' => 'Experience Letters',
-                    'icons' => ''
-                ],
-                [
-                    'route' => 'documents.salary-slips.index',
-                    'label' => 'Salary Slips',
-                    'icons' => ''
-                ],
+                // [
+                //     'route' => 'documents.experience-letters.index',
+                //     'label' => 'Experience Letters',
+                //     'icons' => ''
+                // ],
+                // [
+                //     'route' => 'documents.salary-slips.index',
+                //     'label' => 'Salary Slips',
+                //     'icons' => ''
+                // ],
 
 
             ],
         ],
         [
-            'label' => 'Allowance',
+            'label' => 'Settings',
             'subheadings' => [
                 [
                     'route' => 'allowance.index',

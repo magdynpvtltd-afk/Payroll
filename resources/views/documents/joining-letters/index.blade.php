@@ -14,7 +14,7 @@
         'Issued Date',
         'Joining Date',
         'Option'
-    ]" id="joining-letters" pagetitle="joining List" ajax="joining-letters.getdata" />
+    ]" id="joining-letters" pagetitle="Confirmation Letters" ajax="documents.joining-letters.getdata" />
         </div>
     </section>
 

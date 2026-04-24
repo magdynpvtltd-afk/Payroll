@@ -60,13 +60,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/offer-letters/create', [OfferLetterController::class, 'create'])->name('offer-letters.create');
         Route::get('/offer-letters/{id}/store', [OfferLetterController::class, 'store'])->name('offer-letters.store');
         Route::get('/offer-letters/{offerLetter}/preview', [OfferLetterController::class, 'preview'])->name('offer-letters.preview');
-        Route::get('/offer-letters/{id}/deleter', [OfferLetterController::class, 'delete'])->name('offer-letters.delete');
+        Route::get('/offer-letters/{id}/delete', [OfferLetterController::class, 'delete'])->name('offer-letters.delete');
         Route::get('/offer-letter/{id}/custom' , [OfferLetterController::class , 'custom'])->name('offer-letter.custom');
+        Route::get('/offer-letter/getdata' , [OfferLetterController::class , 'getData'])->name('offer-letters.getdata');
 
         Route::get('/appointment-letters', [JoiningLetterController::class, 'index'])->name('joining-letters.index');
         Route::get('/appointment-letters/create', [JoiningLetterController::class, 'create'])->name('joining-letters.create');
         Route::get('/appointment-letters/{id}/store', [JoiningLetterController::class, 'store'])->name('joining-letters.store');
         Route::get('/appointment-letters/{joiningLetter}/preview', [JoiningLetterController::class, 'preview'])->name('joining-letters.preview');
+        Route::get('/appointment-letters/getdata', [JoiningLetterController::class, 'getdata'])->name('joining-letters.getdata');
+        Route::get('/appointment-letters/{joiningLetter}/delete', [JoiningLetterController::class, 'delete'])->name('joining-letters.delete');
 
         Route::get('/experience-letters', [ExperienceLetterController::class, 'index'])->name('experience-letters.index');
         Route::get('/experience-letters/create', [ExperienceLetterController::class, 'create'])->name('experience-letters.create');
@@ -83,6 +86,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('allowance')->name('allowance.')->group(function(){
         Route::post('/edit' , [AllowanceController::class , 'edit'])->name('edit');
         Route::get('/index' ,[AllowanceController::class , 'index'])->name('index');
+        Route::get('/getData' ,[AllowanceController::class , 'getData'])->name('getData');
     });
 
     Route::get('/home', function () {

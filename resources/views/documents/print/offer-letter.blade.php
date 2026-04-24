@@ -35,7 +35,7 @@
             <tr>
                 <td>4.Compensation</td>
                 <td>:</td>
-                <td>Rs {{ $annex['total_ctc'] / 12  }} per month + retirals</td>
+                <td>Rs {{ round($annex['total_ctc'] / 12)  }} per month + retirals</td>
             </tr>
             <tr>
                 <td>5:Probation</td>
@@ -101,46 +101,24 @@
         <!-- page 2 -->
         @include('documents.partials.letterhead', ['company' => $company, 'title' => 'Offer Letter'])
         <div class="salary_breakup_div">
+            @php
+                $loop_count = 0;
+            @endphp
             <section>
                 <table>
                     <tr>
                         <th colspan="3"><strong>SALARY BREAKUP</strong></th>
                     </tr>
-                    <tr>
-                        <th><strong>S.No</strong></th>
-                        <th><strong>PARTICULARS</strong></th>
-                        <th><strong>Value</strong></th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><strong>Salary</strong></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>BASIC</td>
-                        <td>{{ $annex['basic'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>HRA</td>
-                        <td>{{ $annex['hra'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Conveyance</td>
-                        <td>{{ $annex['conveyance'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Vehicle Maintenance</td>
-                        <td>{{ $annex['vehicle_maintenance'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Production incentive</td>
-                        <td>{{ $annex['production_incentive'] }}</td>
-                    </tr>
+                    @foreach ($annex['allowance'] as $key => $value)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $key }}</td>
+                            <td>{{ $value }}</td>
+                            @php
+                                $loop_count = $loop->iteration;
+                            @endphp
+                        </tr>
+                    @endforeach
                     <tr>
                         <td></td>
                         <td><strong>Gross Pay</strong></td>
@@ -152,17 +130,17 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>7</td>
+                        <td>{{ ++$loop_count}}</td>
                         <td><strong>Benefits</strong></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>8</td>
-                        <td>PF+ESI</td>
+                        <td></td>
+                        <td>PF ESI</td>
                         <td>{{ $annex['pf_esi'] }}</td>
                     </tr>
                     <tr>
-                        <td>9</td>
+                        <td>{{++$loop_count}}</td>
                         <td><strong>Total Cost to Company</strong></td>
                         <td><strong>{{ $annex['total_ctc']}}</strong></td>
                     </tr>
@@ -181,7 +159,7 @@
                         available</li>
                 </ol>
             </section>
-            
+
         </div>
         @include('documents.partials.letterfooter', ['company' => $company])
     </div>
