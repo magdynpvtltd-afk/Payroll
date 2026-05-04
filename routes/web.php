@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
     Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
     Route::get('/leaves', [LeaveController::class, 'index'])->name('leaves.index');
-    Route::get('/department/delete/{id}', [Department::class, 'deleteDepartment'])->name('department.delete');
+
 
     // all document routes
     Route::prefix('documents')->name('documents.')->group(function () {
@@ -93,13 +93,15 @@ Route::middleware('auth')->group(function () {
 
 
     Route::prefix('department')->name('department.')->group(function () {
-        Route::get('/index' , [Department::class , 'index'])->name('index');
+        Route::get('/index', [Department::class, 'index'])->name('index');
         Route::get('/departments/data', [Department::class, 'getDepartmentData'])->name('departments.data');
         Route::post('/departments/add', [Department::class, 'addDepartment'])->name('departments.add');
         Route::post('/departments/edit', [Department::class, 'editDepartment'])->name('departments.edit');
         Route::get('/designations/data', [Department::class, 'getDesignationData'])->name('designations.data');
         Route::post('/designations/add', [Department::class, 'addDesignation'])->name('designations.add');
         Route::post('/designations/edit', [Department::class, 'editDesignation'])->name('designations.edit');
+        Route::get('/department/delete/{id}', [Department::class, 'deleteDepartment'])->name('department.delete');
+        Route::get('/designation/delete/{id}', [Department::class, 'deleteDesignation'])->name('designation.delete');
     });
 
     Route::get('/home', function () {

@@ -58,7 +58,7 @@
         'value',
         'Actions',
     ]" id="allowance_table"
-                pagetitle="Allowance List" ajax="allowance.getData" />
+                pagetitle="Salary Components" ajax="allowance.getData" />
         </div>
     </section>
 

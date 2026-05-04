@@ -37,7 +37,7 @@
             'subheadings' => [
                 [
                     'route' => 'allowance.index',
-                    'label' => 'Allowance List',
+                    'label' => 'Salary Components',
                     'icons' => 'users'
                 ],
                 [

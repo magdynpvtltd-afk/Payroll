@@ -10,8 +10,7 @@ class Designation extends Model
     protected $fillable = [
         'id' ,
         'title' ,
-        'grade' ,
-        'level' ,
+        'department' ,
         'is_managerial'
     ] ;
 }

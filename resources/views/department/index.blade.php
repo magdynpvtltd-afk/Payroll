@@ -50,12 +50,15 @@
                             required></td>
                 </tr>
                 <tr>
-                    <td><label for="designation_grade">Grade</label></td>
-                    <td><input type="text" id="designation_grade" name="grade" placeholder="Optional grade"></td>
-                </tr>
-                <tr>
-                    <td><label for="designation_level">Level</label></td>
-                    <td><input type="number" id="designation_level" name="level" min="0" placeholder="Optional level">
+                    <td><label for="designation_title">Department</label></td>
+                    <td>
+                        <select name="department" id="department">
+                            <option value="-1"> Select Department</option>
+                            @foreach ($dept as $row)
+
+                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
                     </td>
                 </tr>
                 <tr>
@@ -83,14 +86,15 @@
                             placeholder="Enter designation title" required></td>
                 </tr>
                 <tr>
-                    <td><label for="edit_designation_grade">Grade</label></td>
-                    <td><input type="text" id="edit_designation_grade" name="grade" placeholder="Optional grade">
+                    <td><label for="designation_title">Department</label></td>
+                    <td>
+                        <select name="department" id="edit_department_designation">
+                            <option value="-1"> Select Department</option>
+                            @foreach ($dept as $row)
+                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
                     </td>
-                </tr>
-                <tr>
-                    <td><label for="edit_designation_level">Level</label></td>
-                    <td><input type="number" id="edit_designation_level" name="level" min="0"
-                            placeholder="Optional level"></td>
                 </tr>
                 <tr>
                     <td><label for="edit_designation_managerial">Managerial</label></td>
@@ -132,8 +136,7 @@
             function editDesignation(designation) {
                 $('#edit_designation_id').val(designation.id);
                 $('#edit_designation_title').val(designation.title ?? '');
-                $('#edit_designation_grade').val(designation.grade ?? '');
-                $('#edit_designation_level').val(designation.level ?? '');
+                $('#edit_department_designation').val(designation.department);
                 $('#edit_designation_managerial').val(designation.is_managerial ? '1' : '0');
                 $('#edit_designation_modal').modal('show');
             }
@@ -197,6 +200,8 @@
                 $('#departments_table_wrapper .dt-buttons').append(add_dept);
                 $('#designations_table_wrapper .dt-buttons').append(add_design);
             });
+
+
         </script>
     @endpush
 </x-layouts.app>
